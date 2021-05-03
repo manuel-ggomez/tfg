@@ -1,22 +1,22 @@
 const initialState = {
-    sensors: [],
+    topics: [],
     error: "",
     success: ""
 }
 
 export default function(state = initialState, action){
     switch(action.type){
-        case 'GET_SENSORS':
+        case 'GET_TOPICS':
             return {
                 ...state,
-                sensors: action.payload
+                topics: action.payload
             }
-        case 'SENSOR_ERROR':
+        case 'TOPIC_ERROR':
             return {
                 ...state,
                 error: action.payload
             }
-        case 'SENSOR_SUCCESS':
+        case 'TOPIC_SUCCESS':
             return {
                 ...state,
                 success: action.payload

@@ -5,9 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -71,7 +69,7 @@ class Register extends Component {
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                         <TextField
-                            autoComplete="fname"
+                            autoComplete="off"
                             name="firstName"
                             variant="outlined"
                             onChange={(e) => {this.setState({name: e.target.value}); this.props.resetUserError()}}
@@ -91,7 +89,7 @@ class Register extends Component {
                             id="email"
                             label="Usuario"
                             name="email"
-                            autoComplete="email"
+                            autoComplete="off"
                         />
                         </Grid>
                         <Grid item xs={12}>
@@ -104,7 +102,7 @@ class Register extends Component {
                             label="Contraseña"
                             type="password"
                             id="password"
-                            autoComplete="current-password"
+                            autoComplete="off"
                         />
                         </Grid>
                         <Grid item xs={12}>
@@ -117,7 +115,7 @@ class Register extends Component {
                             label="Repetir contraseña"
                             type="password"
                             id="password2"
-                            autoComplete="current-password"
+                            autoComplete="off"
                         />
                         </Grid>
                     </Grid>

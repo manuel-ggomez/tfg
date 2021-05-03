@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import {getSensors, deleteSensor, createSensor} from '../../redux/actions/sensor_actions';
+import {getSensors, deleteSensor, createSensor, resetSensorError, resetSensorSuccess} from '../../redux/actions/sensor_actions';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 
 class Sensors extends Component {
@@ -16,10 +17,12 @@ class Sensors extends Component {
           sensors: null,
           name: "",
           type: "",
+          subtype: "",
           ip: "",
           mac: ""
       }
       this.createSensor = this.createSensor.bind(this)
+      this.closeAlert = this.closeAlert.bind(this)
     }
 
     componentDidMount() {
@@ -49,6 +52,14 @@ class Sensors extends Component {
         this.props.createSensor(sensor)
     }
 
+    closeAlert(event, reason) {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.props.resetSensorError()
+        this.props.resetSensorSuccess()
+    }
+
     
     render() {
         const sensors = this.state.sensors
@@ -63,7 +74,7 @@ class Sensors extends Component {
             })
 
             return(
-                <div style={{display: 'flex', flexDirection: 'column', flexGrow: '1'}}>
+                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <h2>Sensores registrados en PLICA</h2>
                     {sensors.length > 0 ? 
                     <div>{sensorList}</div> : <h5>No hay sensores</h5>}
@@ -75,25 +86,48 @@ class Sensors extends Component {
                   onChange={(e) => {this.setState({name: e.target.value})}} 
                   required
                   fullWidth
+                  autoComplete="off"
                   id="name"
                   label="Nombre del sensor"
                   autoFocus
               />
-              <TextField
-                  variant="outlined"
-                  margin="normal"
-                  onChange={(e) => {this.setState({type: e.target.value})}}
-                  required
-                  fullWidth
-                  label="Tipo de sensor"
-                  id="type"
-              />
+              <InputLabel id="typeSelect">Tipo</InputLabel>
+                    <Select
+                        fullWidth
+                        labelId="typeSelect"
+                        value={this.state.type}
+                        onChange={(e) => {this.setState({type: e.target.value, subtype: e.target.value === "ciberseguridad" ? this.state.subtype : ""})}}
+                        >
+                        <MenuItem value={"wifi"}>WiFi</MenuItem>
+                        <MenuItem value={"bluetooth"}>Bluetooth</MenuItem>
+                        <MenuItem value={"rf"}>Radio Frecuencia</MenuItem>
+                        <MenuItem value={"rm"}>Redes Móviles</MenuItem>
+                        <MenuItem value={"ciberseguridad"}>Ciberseguridad</MenuItem>
+                    </Select>
+                {this.state.type === "ciberseguridad" ?
+                    <>
+                        <InputLabel id="subtypeSelect" style={{marginTop: '10px'}}>Subtipo</InputLabel>
+                        <Select
+                            fullWidth
+                            labelId="subtypeSelect"
+                            value={this.state.subtype}
+                            onChange={(e) => {this.setState({subtype: e.target.value})}}
+                            >
+                            <MenuItem value={"siem"}>Siem</MenuItem>
+                            <MenuItem value={"fw"}>Firewall</MenuItem>
+                            <MenuItem value={"ids"}>IDS</MenuItem>
+                            <MenuItem value={"trafico"}>Tráfico</MenuItem>
+                        </Select>
+                    </>
+                    : null}
+            
                 <TextField
                   variant="outlined"
                   margin="normal"
                   onChange={(e) => {this.setState({ip: e.target.value})}}
                   required
                   fullWidth
+                  autoComplete="off"
                   label="Dirección IP"
                   id="type"
               />
@@ -103,6 +137,7 @@ class Sensors extends Component {
                   onChange={(e) => {this.setState({mac: e.target.value})}}
                   required
                   fullWidth
+                  autoComplete="off"
                   label="Dirección MAC"
                   id="type"
               />
@@ -117,6 +152,16 @@ class Sensors extends Component {
               </Button>
               </form>
                     </div>
+                <Snackbar open={this.props.sensor.success !== ""} autoHideDuration={3000} onClose={this.closeAlert}>
+                    <MuiAlert onClose={this.closeAlert} severity="success" variant="filled">
+                        {this.props.sensor.success}
+                    </MuiAlert>
+                </Snackbar>
+                <Snackbar open={this.props.sensor.error !== ""} autoHideDuration={3000} onClose={this.closeAlert}>
+                    <MuiAlert onClose={this.closeAlert} severity="error" variant="filled">
+                        {this.props.sensor.error}
+                    </MuiAlert>
+                </Snackbar>
                 </div>
             )
 
@@ -134,4 +179,4 @@ function mapStateToProps(state) {
     return { ...state };
 }
 
-export default connect(mapStateToProps, {createSensor, getSensors, deleteSensor})(Sensors);
+export default connect(mapStateToProps, {createSensor, getSensors, deleteSensor, resetSensorError, resetSensorSuccess})(Sensors);

@@ -4,7 +4,6 @@ import {logoutUser} from '../../redux/actions/user_actions';
 import Cards1 from '../Cards1';
 import Cards2 from '../Cards2';
 import Sidebar from '../Sidebar';
-import LogIn from './LogIn';
 import './Home.css'
 
 
@@ -43,10 +42,10 @@ class Home extends Component {
         } else {
             return(
                 <div className="backgroundMain">
-                    <h1 id="title">PLICA</h1>
+                    <h1 id="title">Consola de Mando y Control PLICA</h1>
                     <div className="mainButtons">
-                        <button onClick={() => this.props.history.push('/login')} className="mainButton">Iniciar sesión</button>
-                        <button onClick={() => this.props.history.push('/register')} className="mainButton">Registrarse</button>
+                        <button onClick={() => this.props.history.push('/login')} className="mainButton1">Iniciar sesión</button>
+                        <button onClick={() => this.props.history.push('/register')} className="mainButton2">Registrarse</button>
                     </div>
                 </div>
             );

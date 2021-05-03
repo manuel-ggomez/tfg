@@ -1,0 +1,15 @@
+.contenedor {
+    display: flex;
+}
+
+.huecoIzq {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.huecoDer {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}

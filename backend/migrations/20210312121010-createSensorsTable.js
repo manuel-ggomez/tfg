@@ -12,16 +12,19 @@ module.exports = {
                 },
                 name: {
                     type: Sequelize.STRING,
-                    validate: {notEmpty: {msg: "Name must not be empty"}}
+                    validate: {notEmpty: {msg: "Name must not be empty"}},
+                    unique: true
                 },
                 type: {
                     type: Sequelize.STRING
                 },
                 ip:{
-                    type: Sequelize.STRING
+                    type: Sequelize.STRING,
+                    unique: true
                 },
                 mac: {
-                    type: Sequelize.STRING
+                    type: Sequelize.STRING,
+                    unique: true
                 },
                 createdAt: {
                     type: Sequelize.DATE,

@@ -58,7 +58,7 @@ class Login extends Component {
                   id="email"
                   label="Usuario"
                   name="email"
-                  autoComplete="email"
+                  autoComplete="off"
                   autoFocus
               />
               <TextField
@@ -71,7 +71,7 @@ class Login extends Component {
                   label="Contraseña"
                   type="password"
                   id="password"
-                  autoComplete="current-password"
+                  autoComplete="off"
               />
               <Button
                   type="submit"

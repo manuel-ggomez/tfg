@@ -1,0 +1,12 @@
+.btnOpcion {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.btnOpcion:hover {
+    color: black;
+    font-weight: bold;
+}

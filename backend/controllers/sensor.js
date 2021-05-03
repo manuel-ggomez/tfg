@@ -19,7 +19,7 @@ exports.createSensor = (req, res, next) => {
         .then(sensor => {
             res.send(sensor)
         })
-        .catch(error => next(error));
+        .catch(error => res.send(error.errors[0].message));
 }
 
 exports.getSensors = (req, res, next) => {

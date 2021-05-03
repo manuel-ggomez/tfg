@@ -3,6 +3,7 @@ const router = express.Router();
 
 const userController = require("../controllers/user");
 const sensorController = require("../controllers/sensor");
+const topicController = require("../controllers/topic");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -20,5 +21,9 @@ router.delete('/user/delete/:userId', userController.deleteUser);
 router.post('/sensor/create', sensorController.createSensor);
 router.get('/sensor/getSensors', sensorController.getSensors);
 router.delete('/sensor/delete/:sensorId', sensorController.deleteSensor);
+
+router.post('/topic/create', topicController.createTopic)
+router.get('/topic/getTopics', topicController.getTopics)
+router.delete('/topic/delete/:name', topicController.deleteTopic)
 
 module.exports = router;
