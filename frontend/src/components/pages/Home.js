@@ -23,7 +23,7 @@ class Home extends Component {
         if (this.props.user.authenticated) {
             if (this.props.user.user.isAdmin) {
                 return(
-                    <div>
+                    <div style={{backgroundColor: '#203354'}}>
                         <Sidebar />
                         <Cards1 />
                     </div>
@@ -31,7 +31,7 @@ class Home extends Component {
             } else {
               
                 return(
-                    <div>
+                    <div style={{backgroundColor: '#203354'}}>
                         <Sidebar />
                         <Cards2 />
                     </div>
@@ -41,8 +41,8 @@ class Home extends Component {
             }
         } else {
             return(
-                <div className="backgroundMain">
-                    <h1 id="title">Consola de Mando y Control PLICA</h1>
+                <div className="backgroundMain" style={{backgroundColor: '#203354', height: '100vh'}}>
+                    <h1 id="title" style={{color: 'white'}}>Consola de Mando y Control PLICA</h1>
                     <div className="mainButtons">
                         <button onClick={() => this.props.history.push('/login')} className="mainButton1">Iniciar sesión</button>
                         <button onClick={() => this.props.history.push('/register')} className="mainButton2">Registrarse</button>

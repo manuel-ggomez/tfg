@@ -1,10 +1,6 @@
-.cards {
-  padding: 4rem;
-  background: #fff;
-}
-
 h1 {
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .cards__container {
@@ -18,7 +14,6 @@ h1 {
 
 .cards__wrapper {
   position: relative;
-  margin: 50px 0 45px;
 }
 
 .cards__items {
@@ -94,7 +89,7 @@ h1 {
 }
 
 .cards__item__text {
-  color: #252e48;
+  color: white;
   font-size: 18px;
   line-height: 24px;
 }

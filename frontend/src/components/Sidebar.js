@@ -133,7 +133,7 @@ class Sidebar extends Component {
             </nav>
           </div>
           <nav style={SidebarNav} sidebar={this.state.sidebar}>
-            <div style={{width: '100%'}}>
+            <div style={{backgroundColor: '#152238', width: '100%'}}>
               <Link to='#' className='nav-icon'>
                 <AiIcons.AiOutlineClose onClick={this.showSidebar} />
               </Link>

@@ -34,8 +34,8 @@ h1{
   .bn15:hover {
     padding: 10px 40px;
     transition: all 0.3s ease-out;
-    background-color: transparent;
-    color: black;
+    background-color: white;
+    color: #203354;
     border-radius: 20px;
     border: 2px solid var(--primary);
     transition: all 0.3s ease-out;

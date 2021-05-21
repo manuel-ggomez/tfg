@@ -5,13 +5,13 @@ import CardItem from './CardItem';
 function Cards2() {
   return (
     <div className='cards'>
-      <h1>Consola de Mando y Control PLICA</h1>
+      <h1 style={{color: 'white'}}>Consola de Mando y Control PLICA</h1>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
             <CardItem
               src='images/pandora_logo.jpg'
-              text='Gestión de sensores'
+              text='Gestión de Sensores y Subsistemas'
               label='Gestión'
               path='/gestion/sensores'
             />

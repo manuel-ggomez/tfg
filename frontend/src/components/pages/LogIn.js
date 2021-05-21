@@ -8,6 +8,9 @@ import TextField from '@material-ui/core/TextField';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import Sidebar from '../Sidebar';
 import './LogIn.css';
 
 class Login extends Component {
@@ -15,18 +18,11 @@ class Login extends Component {
         super(props);
         this.state = {
             email: "",
-            password: "",
-            error: ""
+            password: ""
+
         }
         this.login = this.login.bind(this);
-    }
-
-    componentDidUpdate(prevProps){
-        if (this.props.user.error !== prevProps.user.error) {
-            this.setState({
-                error: this.props.user.error
-            })
-        }
+        this.closeAlert = this.closeAlert.bind(this)
     }
 
     login(e){
@@ -37,54 +33,72 @@ class Login extends Component {
         };
         this.props.loginUser(user)
     }
+
+    closeAlert(event, reason) {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.props.resetUserError()
+    }
+
+
     render() {
         return(
-          <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <div className='paper'>
-              <Avatar className='avatar'>
-              <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-              Iniciar Sesión
-              </Typography>
-              <form onSubmit={this.login} className='form' >
-              <TextField
-                  variant="outlined"
-                  margin="normal"
-                  onChange={(e) => {this.setState({email: e.target.value})}} 
-                  required
-                  fullWidth
-                  id="email"
-                  label="Usuario"
-                  name="email"
-                  autoComplete="off"
-                  autoFocus
-              />
-              <TextField
-                  variant="outlined"
-                  margin="normal"
-                  onChange={(e) => {this.setState({password: e.target.value})}}
-                  required
-                  fullWidth
-                  name="password"
-                  label="Contraseña"
-                  type="password"
-                  id="password"
-                  autoComplete="off"
-              />
-              <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className='submit'
-              >
-                  Iniciar Sesión
-              </Button>
-              </form>
-          </div>
-          </Container>
+            <div style={{backgroundColor: '#203354', minHeight: '100vh'}}>
+                {this.props.admin ? <Sidebar/> : <div style={{backgroundColor: '#203354', width: '100%', height: '10vh'}}/>}
+                <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <div className='paper'>
+                    <Avatar className='avatar'>
+                    <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5" style={{color: 'white'}}>
+                    Iniciar Sesión
+                    </Typography>
+                    <form onSubmit={this.login} className='form' >
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        onChange={(e) => {this.setState({email: e.target.value})}} 
+                        required
+                        fullWidth
+                        id="email"
+                        label="Usuario"
+                        name="email"
+                        autoComplete="off"
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        onChange={(e) => {this.setState({password: e.target.value})}}
+                        required
+                        fullWidth
+                        name="password"
+                        label="Contraseña"
+                        type="password"
+                        id="password"
+                        autoComplete="off"
+                    />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className='submit'
+                    >
+                        Iniciar Sesión
+                    </Button>
+                    </form>
+                    
+                        <Snackbar open={this.props.user.error !== ""} autoHideDuration={3000} onClose={this.closeAlert}>
+                            <MuiAlert onClose={this.closeAlert} severity="error" variant="filled">
+                                {this.props.user.error}
+                            </MuiAlert>
+                        </Snackbar>
+                </div>
+                </Container>
+            </div>
         );
     }
 }

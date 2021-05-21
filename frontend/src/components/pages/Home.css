@@ -43,8 +43,8 @@
 }
 .mainButton1:hover {
     transition: 0.3s ease-out;
-    background-color: transparent;
-    color: #15171c;
+    background-color: white;
+    color: #203354;
     border-radius: 4px;
     border: 2px solid #15171c;
     transition: 0.3s ease-out;
@@ -52,8 +52,8 @@
 
 .mainButton2:hover {
     transition: 0.3s ease-out;
-    background-color: transparent;
-    color: #15171c;
+    background-color: white;
+    color: #203354;
     border-radius: 4px;
     border: 2px solid #15171c;
     transition: 0.3s ease-out;

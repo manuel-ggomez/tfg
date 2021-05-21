@@ -3,6 +3,9 @@ const db = require('../models');
 const user = db['user']
 const sensor = db['sensor']
 const models = {user: user, sensor: sensor}
+const {promisify} = require('util')
+const exec = promisify(require('child_process').exec)
+const exec2 = require('child_process').exec
 
 exports.createSensor = (req, res, next) => {
     const name = req.body.name;
@@ -37,4 +40,54 @@ exports.deleteSensor = (req,res,next) => {
             res.send(true)
         })
         .catch(error => next(error));
+}
+
+exports.openSensor = (req, res, next) => {
+    const ip = req.body.ip
+    async function openSensor(ip) {
+        const execRun = (cmd) => {
+            return new Promise((resolve, reject) => {
+                exec2(cmd, (error, stdout, stderr) => {
+                    if (error) {
+                        resolve(stdout)
+                    } else {
+                        resolve(stdout)
+                    }
+                })
+            })
+        }
+        try {
+            const proceso = await execRun('fuser -vk 8080/tcp')
+        } catch(e) {
+            console.log(e)
+        }
+        const {stdout, stderr} = exec('/home/tfg_manuel/go/bin/gotty --once -w ssh root@' + ip)
+        res.send(true)
+    }
+    openSensor(ip)
+}
+
+exports.openSubsistema = (req, res, next) => {
+    const name = req.body.name
+    async function openSubsistema(name) {
+        const execRun = (cmd) => {
+            return new Promise((resolve, reject) => {
+                exec2(cmd, (error, stdout, stderr) => {
+                    if (error) {
+                        resolve(stdout)
+                    } else {
+                        resolve(stdout)
+                    }
+                })
+            })
+        }
+        try {
+            const proceso = await execRun('fuser -vk 8080/tcp')
+        } catch(e) {
+            console.log(e)
+        }
+        const {stdout, stderr} = exec('/home/tfg_manuel/go/bin/gotty --once -w sudo docker exec -it ' + name + ' bash')
+        res.send(true)
+    }
+    openSubsistema(name)
 }

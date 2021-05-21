@@ -8,6 +8,8 @@ import MuiAlert from '@material-ui/lab/Alert';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import DeleteIcon from '@material-ui/icons/Delete';
+import './ListaUsuarios.css';
 
 
 class Sensors extends Component {
@@ -49,6 +51,15 @@ class Sensors extends Component {
             ip: this.state.ip,
             mac: this.state.mac
         };
+
+        this.setState({
+            name: "",
+            type: "",
+            subtype: "",
+            ip: "",
+            mac: ""
+        })
+
         this.props.createSensor(sensor)
     }
 
@@ -65,19 +76,27 @@ class Sensors extends Component {
         const sensors = this.state.sensors
         if (sensors !== null) {
             const sensorList = sensors.map((sensor) => {
+                let formatter = new Intl.DateTimeFormat("es-ES", {
+                    year: "numeric",
+                    month: "numeric",
+                    day: "2-digit",
+                    hour: "numeric",
+                    minute: "numeric"
+                });
+                let fecha = formatter.format(Date.parse(sensor.createdAt))
                 return(
-                    <div>
-                        {sensor.name} - {sensor.ip} - {sensor.mac} - {sensor.createdAt}
-                        <button onClick={this.deleteSensor.bind(this, sensor.id)}>Borrar</button>
+                    <div style={{display: 'flex'}}>
+                        {sensor.name} - {sensor.ip} - {sensor.mac} - {fecha}
+                        <button className="delete2" onClick={this.deleteSensor.bind(this, sensor.id)}><DeleteIcon/></button>
                     </div>
                 )
             })
 
             return(
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                    <h2>Sensores registrados en PLICA</h2>
+                    <h2 style={{color: 'white'}}>Sensores registrados en PLICA</h2>
                     {sensors.length > 0 ? 
-                    <div>{sensorList}</div> : <h5>No hay sensores</h5>}
+                    <div style={{color: 'white'}}>{sensorList}</div> : <h5 style={{color: 'white'}}>No hay sensores</h5>}
                     <div>
                     <form style={{width: "200px"}} onSubmit={this.createSensor} className='form' >
               <TextField
@@ -90,6 +109,7 @@ class Sensors extends Component {
                   id="name"
                   label="Nombre del sensor"
                   autoFocus
+                  value={this.state.name}
               />
               <InputLabel id="typeSelect">Tipo</InputLabel>
                     <Select
@@ -129,7 +149,8 @@ class Sensors extends Component {
                   fullWidth
                   autoComplete="off"
                   label="Dirección IP"
-                  id="type"
+                  id="ip"
+                  value={this.state.ip}
               />
                 <TextField
                   variant="outlined"
@@ -139,7 +160,8 @@ class Sensors extends Component {
                   fullWidth
                   autoComplete="off"
                   label="Dirección MAC"
-                  id="type"
+                  id="mac"
+                  value={this.state.mac}
               />
               <Button
                   type="submit"

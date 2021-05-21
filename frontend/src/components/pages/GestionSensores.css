@@ -2,11 +2,13 @@
     background-color: transparent;
     border: none;
     outline: none;
-    margin: 10px;
+    margin: 5px;
     cursor: pointer;
+    color: white;
 }
 
 .btnOpcion:hover {
-    color: black;
+    color: yellowgreen;
     font-weight: bold;
 }
+

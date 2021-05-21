@@ -9,6 +9,7 @@ module.exports = {
                 name: 'Manuel',
                 password: crypt.encryptPassword('pandora', 'admin'),
                 email: 'admin',
+                validated: true,
                 salt: 'admin',
                 isAdmin: true,
                 createdAt: new Date(),

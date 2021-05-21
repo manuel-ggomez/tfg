@@ -17,32 +17,35 @@ class Register extends Component {
     constructor(props){
         super(props);
         this.state = {
+            name: "",
             email: "",
             password: "",
-            password2: "",
-            error: ""
+            password2: ""
         }
         this.register = this.register.bind(this);
         this.closeAlert = this.closeAlert.bind(this);
     }
 
-    componentDidUpdate(prevProps){
-        if (this.props.user.error !== prevProps.user.error) {
-            this.setState({
-                error: this.props.user.error
-            })
-        }
-    }
-
     register(e){
+
         e.preventDefault()
+
         const user = {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2
         };
+
+        this.setState({
+            name: "",
+            email: "",
+            password: "",
+            password2: ""
+        })
+
         this.props.registerUser(user, this.props.admin)
+
     }
 
     closeAlert(event, reason) {
@@ -55,14 +58,14 @@ class Register extends Component {
 
     render() {
         return(
-            <>
-                {this.props.admin ? <Sidebar/> : null}
+            <div style={{backgroundColor: '#203354', minHeight: '100vh'}}>
+                {this.props.admin ? <Sidebar/> : <div style={{backgroundColor: '#203354', width: '100%', height: '10vh'}}/>}
                 <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className='paper'>
                     <Avatar className='avatar'>
                     </Avatar>
-                    <Typography component="h1" variant="h5">
+                    <Typography component="h1" variant="h5" style={{color: 'white'}}>
                     Crear usuario
                     </Typography>
                     <form onSubmit={this.register} className='form' noValidate>
@@ -78,6 +81,7 @@ class Register extends Component {
                             id="firstName"
                             label="Nombre"
                             autoFocus
+                            value={this.state.name}
                         />
                         </Grid>
                         <Grid item xs={12}>
@@ -90,6 +94,7 @@ class Register extends Component {
                             label="Usuario"
                             name="email"
                             autoComplete="off"
+                            value={this.state.email}
                         />
                         </Grid>
                         <Grid item xs={12}>
@@ -103,6 +108,7 @@ class Register extends Component {
                             type="password"
                             id="password"
                             autoComplete="off"
+                            value={this.state.password}
                         />
                         </Grid>
                         <Grid item xs={12}>
@@ -116,6 +122,7 @@ class Register extends Component {
                             type="password"
                             id="password2"
                             autoComplete="off"
+                            value={this.state.password2}
                         />
                         </Grid>
                     </Grid>
@@ -141,7 +148,7 @@ class Register extends Component {
                         {this.props.user.error}
                     </MuiAlert>
                 </Snackbar>
-            </>
+            </div>
 
         );
     }

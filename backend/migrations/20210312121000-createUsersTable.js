@@ -28,6 +28,10 @@ module.exports = {
                     unique: true,
                     validate: {notEmpty: {msg: "Email must not be empty"}}
                 },
+                validated:{
+                    type: Sequelize.BOOLEAN,
+                    defaultValue: false
+                },
                 isAdmin: {
                     type: Sequelize.BOOLEAN,
                     defaultValue: false

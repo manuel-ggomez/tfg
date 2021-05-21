@@ -63,14 +63,14 @@ class Profile extends React.Component {
 
     render() {
         return(
-            <>
+            <div style={{backgroundColor: '#203354', minHeight: '110vh'}}>
                 <Sidebar />
                 <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className='paper'>
                     <Avatar className='avatar'>
                     </Avatar>
-                    <Typography component="h1" variant="h5">
+                    <Typography component="h1" variant="h5" style={{color: 'white'}}>
                     Editar perfil
                     </Typography>
                         <form onSubmit={this.editUser} id="inputForm">
@@ -163,7 +163,7 @@ class Profile extends React.Component {
                         </form>
                     </div>
                 </Container>
-            </>
+            </div>
             
         );
     }

@@ -21,7 +21,7 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: 'Gestión de sensores',
+        title: 'Gestión de Sensores y Subsistemas',
         path: '/gestion/sensores',
         icon: <i class="fas fa-terminal"></i>
       },

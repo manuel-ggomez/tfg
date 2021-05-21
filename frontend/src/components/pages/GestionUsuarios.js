@@ -9,11 +9,11 @@ import './GestionUsuarios.css';
 class GestionUsuarios extends Component {
     render(){
         return(
-            <>
+            <div style={{backgroundColor: '#203354', height: '100vh'}}>
                 <Sidebar/>
                 <div>
                     <div>
-                        <h1>Gestión de Usuarios</h1>
+                        <h1 style={{color: 'white'}}>Gestión de Usuarios</h1>
                     </div>
                     <div class="opciones">
                         
@@ -23,7 +23,7 @@ class GestionUsuarios extends Component {
 
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }

@@ -1,5 +1,7 @@
 const initialState = {
     sensors: [],
+    sensorOpened: false,
+    sensorStatus: false,
     error: "",
     success: ""
 }
@@ -20,6 +22,12 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 success: action.payload
+            }
+        case 'SENSOR_OPENED':
+            return {
+                ...state,
+                sensorOpened: action.payload,
+                sensorStatus: !state.sensorStatus
             }
         default:
             return state;

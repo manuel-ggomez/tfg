@@ -1,6 +1,6 @@
 .nav {
-    background: #15171c;               
-    height: 80px;
+    background-color: #152238;               
+    height: 12vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -16,7 +16,7 @@
 }
 
 .sidebar-nav {
-    background: #15171c;
+    background-color: #152238;
     width: 250px;
     height: 100vh;
     display: flex;

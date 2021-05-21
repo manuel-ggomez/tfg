@@ -55,6 +55,33 @@ export const deleteSensor = (id) => dispatch => {
         })
 }
 
+export const openSensor = (ip) => dispatch => {
+    axios.put('/sensor/openSensor', {ip})
+    .then(res => {
+        console.log(res.data)
+        if (res.data) {
+            dispatch({
+                type: 'SENSOR_OPENED',
+                payload: true
+            })
+        }
+    })
+}
+
+export const openSubsistema = (name) => dispatch => {
+    axios.put('/sensor/openSubsistema', {name})
+    .then(res => {
+        console.log(res.data)
+        if (res.data) {
+            dispatch({
+                type: 'SENSOR_OPENED',
+                payload: true
+            })
+        }
+    })
+}
+
+
 export const resetSensorError = () => dispatch => {
     dispatch({
         type: 'SENSOR_ERROR',

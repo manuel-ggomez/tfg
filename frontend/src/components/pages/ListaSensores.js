@@ -1,42 +1,77 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux";
-import Sidebar from '../Sidebar';
-import Sensors from './Sensors';
-import Topics from './Topics';
 import './Home.css';
 import './Configuracion.css';
 
 
 export default class ListaSensores extends Component {
+
+    handleClickSensor(ip){
+        this.props.handleClickSensor(ip)
+    }
+
+    handleClickSubsistema(name){
+        this.props.handleClickSubsistema(name)
+    }
     
     render() {
         let sensors = this.props.sensors
         if (sensors !== null) {
             if (this.props.type !== null) {
-                sensors = sensors.filter((sensor) => sensor.type === this.props.type)
-                const sensorList = sensors.map((sensor) => {
-                    return(
-                        <div>
-                            {sensor.name} - {sensor.ip} - {sensor.mac} - {sensor.createdAt}
-                        </div>
-                    )
-            })
-            return(
-                <div>
-                    {sensorList.length > 0 ? sensorList : <div>No hay sensores</div>}
-                </div>
-            )
+                switch(this.props.type){
+                    case "bigData":
+                        return(
+                            <>
+                                <button className='btnOpcion' onClick={this.handleClickSubsistema.bind(this, "elasticsearch")}>
+                                    Elasticsearch
+                                </button>
+                                <button className='btnOpcion' onClick={this.handleClickSubsistema.bind(this, "kibana")}>
+                                    Kibana
+                                </button>
+                            </>
+                        )
+                        
+                    case "subsist":
+                        this.props.handleClickSensor("172.17.0.3")
+                        return null;
+
+                    default:
+                        sensors = sensors.filter((sensor) => sensor.type === this.props.type)
+                        const sensorList = sensors.map((sensor) => {
+                            let formatter = new Intl.DateTimeFormat("es-ES", {
+                                year: "numeric",
+                                month: "numeric",
+                                day: "2-digit",
+                                hour: "numeric",
+                                minute: "numeric"
+                            });
+                            let fecha = formatter.format(Date.parse(sensor.createdAt))
+                            return(
+                                <button className='btnOpcion' key={sensor.id} onClick={this.handleClickSensor.bind(this, sensor.ip)}>
+                                    {sensor.name} - {sensor.ip} - {sensor.mac} - {fecha}
+                                </button>
+                            )
+                        })
+                        return(
+                            <div>
+                                {sensorList.length > 0 ? sensorList : <div style={{color: 'white'}}>No hay sensores</div>}
+                            </div>
+                        )
+                        
+                }
+                
+            
+            
             } else {
                 return(
-                    <div>
-                        Seleccione tipo de sensor
+                    <div style={{color: 'white'}}>
+                        Seleccione tipo de sensor o subsistema
                     </div>
                 )
             }
             
         } else {
             return(
-                <div>CARGANDO</div>
+                <div style={{color: 'white'}}>CARGANDO</div>
             )
         }
     }

@@ -5,7 +5,7 @@ const sensor = db['sensor']
 const models = {user: user, sensor: sensor}
 
 exports.register = (req, res, next) => {
-    const {name, email, password, password2} = req.body;
+    const {name, email, password, password2, validated} = req.body;
     if (password !== password2) {
         res.send({success: false, data: "Las contraseñas no coinciden"});
         return;
@@ -18,9 +18,10 @@ exports.register = (req, res, next) => {
                 const user = models.user.build({
                     name,
                     email,
-                    password
+                    password,
+                    validated
                 });
-                user.save({fields: ["name", "email", "password", "salt"]})
+                user.save({fields: ["name", "email", "password", "validated", "salt"]})
                     .then(user => {
                         res.send({success: true, data: user})
                     })
@@ -45,16 +46,21 @@ const authenticate = (email, password) => {
 exports.login = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
-    console.log('Hola');
     authenticate(email, password)
         .then(user => {
-            if (user != null) {
-                res.send(user)
+            if (user !== null) {
+                if (user.validated) {
+                    console.log('validado')
+                    res.send(user)
+                } else {
+                    console.log('no validado')
+                    res.send("Usuario en proceso de validación")
+                }
             } else {
                 res.send(false)
             }
         })
-        .catch(error => next(error));
+        .catch(error => console.log(error));
 };
 
 exports.edit = (req, res, next) => {
@@ -119,6 +125,17 @@ exports.deleteUser = (req,res,next) => {
     models.user.destroy({where: {id: id}})
         .then(() => {
             res.send(true)
+        })
+        .catch(error => next(error));
+}
+
+exports.validateUser = (req,res,next) => {
+    const id = req.params.userId;
+    models.user.findByPk(id)
+        .then(user => {
+            user.validated = true
+            user.save()
+            res.send(user)
         })
         .catch(error => next(error));
 }

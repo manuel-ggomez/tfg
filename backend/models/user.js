@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
             validate: {notEmpty: {msg: "Email must not be empty"}}
         },
+        validated:{
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
         salt: {
             type: DataTypes.STRING,
             defaultValue: "aaaa"

@@ -15,27 +15,27 @@ export const SidebarData2 = [
   {
     title: 'Gestión',
     path: '/gestion',
-    icon: <AiIcons.AiFillHome />,
+    icon: <i class="fas fa-tasks"></i>,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
-        title: 'Gestión de sensores',
+        title: 'Gestión de Sensores y Subsistemas',
         path: '/gestion/sensores',
-        icon: <IoIcons.IoIosPaper />
+        icon: <i class="fas fa-terminal"></i>
       },
       {
         title: 'Configuración',
         path: '/gestion/configuracion',
-        icon: <IoIcons.IoIosPaper />
+        icon: <i class="fas fa-tools"></i>
       }
     ]
   },
   {
     title: 'Visualización',
     path: '/visualizacion',
-    icon: <IoIcons.IoIosPaper />,
+    icon: <i class="fas fa-eye"></i>,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
@@ -43,13 +43,13 @@ export const SidebarData2 = [
       {
         title: 'Riesgo Dinámico',
         path: '/visualizacion/riesgo-dinamico',
-        icon: <IoIcons.IoIosPaper />,
+        icon: <i class="fas fa-chart-pie"></i>,
         cName: 'sub-nav'
       },
       {
         title: 'Consulta Datos',
         path: '/visualizacion/consulta-datos',
-        icon: <IoIcons.IoIosPaper />,
+        icon: <i class="fas fa-poll"></i>,
         cName: 'sub-nav'
       }
     ]

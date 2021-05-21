@@ -17,10 +17,13 @@ router.put('/user/edit/:userId', userController.edit);
 router.put('/user/password/:userId', userController.changePassword);
 router.get('/user/userlist', userController.userList);
 router.delete('/user/delete/:userId', userController.deleteUser);
+router.put('/user/validate/:userId', userController.validateUser)
 
 router.post('/sensor/create', sensorController.createSensor);
 router.get('/sensor/getSensors', sensorController.getSensors);
 router.delete('/sensor/delete/:sensorId', sensorController.deleteSensor);
+router.put('/sensor/openSensor', sensorController.openSensor);
+router.put('/sensor/openSubsistema', sensorController.openSubsistema);
 
 router.post('/topic/create', topicController.createTopic)
 router.get('/topic/getTopics', topicController.getTopics)
