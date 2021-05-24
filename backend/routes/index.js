@@ -24,6 +24,8 @@ router.get('/sensor/getSensors', sensorController.getSensors);
 router.delete('/sensor/delete/:sensorId', sensorController.deleteSensor);
 router.put('/sensor/openSensor', sensorController.openSensor);
 router.put('/sensor/openSubsistema', sensorController.openSubsistema);
+router.put('/sensor/runScript', sensorController.runScript);
+router.put('/sensor/stopScript', sensorController.stopScript);
 
 router.post('/topic/create', topicController.createTopic)
 router.get('/topic/getTopics', topicController.getTopics)

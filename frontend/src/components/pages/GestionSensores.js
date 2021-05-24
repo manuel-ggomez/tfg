@@ -5,6 +5,7 @@ import {getSensors, openSensor, openSubsistema} from '../../redux/actions/sensor
 import './Home.css';
 import './Configuracion.css';
 import './GestionSensores.css';
+import '../Cards.css';
 import ListaSensores from './ListaSensores';
 
 
@@ -32,7 +33,7 @@ class GestionSensores extends Component {
         if (this.props.sensor.sensorOpened && this.props.sensor.sensorStatus !== prevProps.sensor.sensorStatus){
             console.log('update')
             this.setState({
-                timeout: setTimeout(()=>this.refresh(), 100)
+                timeout: setTimeout(()=>this.refresh(), 250)
             })
         }
     }
@@ -62,21 +63,21 @@ class GestionSensores extends Component {
         return(
         <div style={{backgroundColor: '#203354', height: '100vh'}}>
             <Sidebar />
-            <h1 style={{color: 'white', marginBottom: '50px'}}>Gestión de elementos PLICA</h1>
+            <div className='tituloPagina'>Gestión de elementos PLICA</div>
             <div className="contenedor" >
                 <div className='huecoIzq' style={{height: '50vh'}}>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
-                            <button className="btnOpcion" style={{color: this.state.type === "wifi" ? 'red' : null}} onClick={() => this.setState({type: "wifi", opened: false})}>Sensores WiFi</button>
-                            <button className="btnOpcion" style={{color: this.state.type === "bluetooth" ? 'red' : null}} onClick={() => this.setState({type: "bluetooth", opened: false})}>Sensores Bluetooth</button>
-                            <button className="btnOpcion" style={{color: this.state.type === "rf" ? 'red' : null}} onClick={() => this.setState({type: "rf", opened: false})}>Sensores Radio Frecuencia</button>
-                            <button className="btnOpcion" style={{color: this.state.type === "rm" ? 'red' : null}} onClick={() => this.setState({type: "rm", opened: false})}>Sensores Redes Móviles</button>
-                            <button className="btnOpcion" style={{color: this.state.type === "ciberseguridad" ? 'red' : null}} onClick={() => this.setState({type: "ciberseguridad", opened: false})}>Sensores Ciberseguridad</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "wifi" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "wifi", opened: false})}>Sensores WiFi</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "bluetooth" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "bluetooth", opened: false})}>Sensores Bluetooth</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "rf" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "rf", opened: false})}>Sensores Radio Frecuencia</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "rm" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "rm", opened: false})}>Sensores Redes Móviles</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "ciberseguridad" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "ciberseguridad", opened: false})}>Sensores Ciberseguridad</button>
                         </div>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
-                            <button className="btnOpcion" onClick={() => this.setState({type: "bigData", opened: false})}>Subsistema Big Data</button>
-                            <button className="btnOpcion" onClick={() => this.setState({type: "subsist", opened: false})}>Subsistema Gestión de flujos</button>
-                            <button className="btnOpcion" onClick={() => this.setState({type: "subsist", opened: false})}>Subsistema Procesamiento</button>
-                            <button className="btnOpcion" onClick={() => this.setState({type: "subsist", opened: false})}>Subsistema Ontologías</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "bigData" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "bigData", opened: false})}>Subsistema Big Data</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "subsist1" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "subsist1", opened: false})}>Subsistema Gestión de flujos</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "subsist2" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "subsist2", opened: false})}>Subsistema Procesamiento</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "subsist3" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "subsist3", opened: false})}>Subsistema Ontologías</button>
                         </div>
                 </div>
                 <div className='huecoDer' style={{margin: '30px', height: '50vh'}}>
@@ -85,7 +86,7 @@ class GestionSensores extends Component {
                         : this.props.sensor.sensorOpened ?
                         <iframe id="consola" src="http://localhost:8080" onLoad={()=>{clearTimeout(this.state.timeout); console.log('onload')}} style={{width: '100%', height: '100%'}}></iframe>
                 :
-                <h6>CARGANDO</h6>
+                <h6 style={{fontFamily: 'Header'}}>CARGANDO</h6>
                 }
                 </div>
             </div>

@@ -30,7 +30,13 @@ export default class ListaSensores extends Component {
                             </>
                         )
                         
-                    case "subsist":
+                    case "subsist1" :
+                        this.props.handleClickSensor("172.17.0.3")
+                        return null;
+                    case "subsist2":
+                        this.props.handleClickSensor("172.17.0.3")
+                        return null;
+                    case "subsist3":
                         this.props.handleClickSensor("172.17.0.3")
                         return null;
 
@@ -46,14 +52,14 @@ export default class ListaSensores extends Component {
                             });
                             let fecha = formatter.format(Date.parse(sensor.createdAt))
                             return(
-                                <button className='btnOpcion' key={sensor.id} onClick={this.handleClickSensor.bind(this, sensor.ip)}>
+                                <button className='btnOpcion' style={{fontFamily: 'Header'}} key={sensor.id} onClick={this.handleClickSensor.bind(this, sensor.ip)}>
                                     {sensor.name} - {sensor.ip} - {sensor.mac} - {fecha}
                                 </button>
                             )
                         })
                         return(
                             <div>
-                                {sensorList.length > 0 ? sensorList : <div style={{color: 'white'}}>No hay sensores</div>}
+                                {sensorList.length > 0 ? sensorList : <div style={{color: 'white', fontFamily: 'Header'}}>No hay sensores</div>}
                             </div>
                         )
                         
@@ -63,7 +69,7 @@ export default class ListaSensores extends Component {
             
             } else {
                 return(
-                    <div style={{color: 'white'}}>
+                    <div style={{color: 'white', fontFamily: 'Header'}}>
                         Seleccione tipo de sensor o subsistema
                     </div>
                 )

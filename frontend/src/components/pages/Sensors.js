@@ -10,6 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import DeleteIcon from '@material-ui/icons/Delete';
 import './ListaUsuarios.css';
+import './Home.css'
 
 
 class Sensors extends Component {
@@ -85,7 +86,7 @@ class Sensors extends Component {
                 });
                 let fecha = formatter.format(Date.parse(sensor.createdAt))
                 return(
-                    <div style={{display: 'flex'}}>
+                    <div style={{display: 'flex', fontFamily: 'Header'}}>
                         {sensor.name} - {sensor.ip} - {sensor.mac} - {fecha}
                         <button className="delete2" onClick={this.deleteSensor.bind(this, sensor.id)}><DeleteIcon/></button>
                     </div>
@@ -94,13 +95,13 @@ class Sensors extends Component {
 
             return(
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                    <h2 style={{color: 'white'}}>Sensores registrados en PLICA</h2>
+                    <h2 style={{color: 'white', marginBottom: '20px', fontFamily: 'Header', fontWeight: 'normal'}}>Sensores registrados en PLICA</h2>
                     {sensors.length > 0 ? 
-                    <div style={{color: 'white'}}>{sensorList}</div> : <h5 style={{color: 'white'}}>No hay sensores</h5>}
+                    <div style={{color: 'white', fontFamily: 'Header'}}>{sensorList}</div> : <div style={{color: 'white', fontFamily: 'Header'}}>No hay sensores</div>}
                     <div>
                     <form style={{width: "200px"}} onSubmit={this.createSensor} className='form' >
               <TextField
-                  variant="outlined"
+                  variant="filled"
                   margin="normal"
                   onChange={(e) => {this.setState({name: e.target.value})}} 
                   required
@@ -110,8 +111,13 @@ class Sensors extends Component {
                   label="Nombre del sensor"
                   autoFocus
                   value={this.state.name}
+                  InputProps={{
+                    style: {
+                        backgroundColor: 'white'
+                    }
+                  }}
               />
-              <InputLabel id="typeSelect">Tipo</InputLabel>
+              <InputLabel id="typeSelect" style={{color: 'white'}} >Tipo de sensor</InputLabel>
                     <Select
                         fullWidth
                         labelId="typeSelect"
@@ -126,7 +132,7 @@ class Sensors extends Component {
                     </Select>
                 {this.state.type === "ciberseguridad" ?
                     <>
-                        <InputLabel id="subtypeSelect" style={{marginTop: '10px'}}>Subtipo</InputLabel>
+                        <InputLabel id="subtypeSelect" style={{marginTop: '10px', color: 'white'}}>Subtipo</InputLabel>
                         <Select
                             fullWidth
                             labelId="subtypeSelect"
@@ -142,7 +148,7 @@ class Sensors extends Component {
                     : null}
             
                 <TextField
-                  variant="outlined"
+                  variant="filled"
                   margin="normal"
                   onChange={(e) => {this.setState({ip: e.target.value})}}
                   required
@@ -151,9 +157,14 @@ class Sensors extends Component {
                   label="Dirección IP"
                   id="ip"
                   value={this.state.ip}
+                  InputProps={{
+                    style: {
+                        backgroundColor: 'white'
+                    }
+                }}
               />
                 <TextField
-                  variant="outlined"
+                  variant="filled"
                   margin="normal"
                   onChange={(e) => {this.setState({mac: e.target.value})}}
                   required
@@ -162,12 +173,17 @@ class Sensors extends Component {
                   label="Dirección MAC"
                   id="mac"
                   value={this.state.mac}
+                  InputProps={{
+                    style: {
+                        backgroundColor: 'white'
+                    }
+                }}
               />
               <Button
                   type="submit"
                   fullWidth
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   className='submit'
               >
                   Crear
@@ -189,7 +205,7 @@ class Sensors extends Component {
 
         } else {
             return(
-                <div className="backgroundMain">
+                <div style={{color: 'white'}} >
                     CARGANDO
                 </div>
             );

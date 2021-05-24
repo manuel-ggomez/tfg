@@ -10,12 +10,12 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import Sidebar from '../Sidebar';
 import './LogIn.css';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
-import { white } from '@material-ui/core/colors'
+import '../Cards.css';
 
-class Register extends Component {
+
+
+class Register2 extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -46,7 +46,7 @@ class Register extends Component {
             password2: ""
         })
 
-        this.props.registerUser(user, this.props.admin)
+        this.props.registerUser(user, true)
 
     }
 
@@ -60,12 +60,11 @@ class Register extends Component {
 
     render() {
         return(
-            <div style={{backgroundColor: '#203354', minHeight: '100vh'}}>
-                {this.props.admin ? <Sidebar/> : <div style={{backgroundColor: '#203354', width: '100%', height: '10vh'}}/>}
+            <>
                 <Container component="main" maxWidth="xs">
                 <CssBaseline />
-                <div className='paper'>
-                    <div style={{color: 'white', fontFamily: 'Header', textAlign: 'center', fontSize: '30px'}}>
+                <div>
+                    <div className='subtituloPagina'>
                     Crear usuario
                     </div>
                     <form onSubmit={this.register} className='form' noValidate>
@@ -169,8 +168,7 @@ class Register extends Component {
                         {this.props.user.error}
                     </MuiAlert>
                 </Snackbar>
-            </div>
-
+            </>
         );
     }
 }
@@ -179,4 +177,4 @@ function mapStateToProps(state) {
     return { ...state };
 }
 
-export default connect(mapStateToProps, {registerUser, resetUserError, resetUserSuccess})(Register);
+export default connect(mapStateToProps, {registerUser, resetUserError, resetUserSuccess})(Register2);

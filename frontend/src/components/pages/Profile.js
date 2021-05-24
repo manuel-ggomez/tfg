@@ -1,11 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {editUser, changePassword} from '../../redux/actions/user_actions';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Sidebar from '../Sidebar';
@@ -63,32 +61,35 @@ class Profile extends React.Component {
 
     render() {
         return(
-            <div style={{backgroundColor: '#203354', minHeight: '110vh'}}>
+            <div style={{backgroundColor: '#203354', minHeight: '100vh'}}>
                 <Sidebar />
                 <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className='paper'>
-                    <Avatar className='avatar'>
-                    </Avatar>
-                    <Typography component="h1" variant="h5" style={{color: 'white'}}>
+                    <div style={{color: 'white', fontFamily: 'Header', textAlign: 'center', fontSize: '20px'}}>
                     Editar perfil
-                    </Typography>
+                    </div>
                         <form onSubmit={this.editUser} id="inputForm">
                             <TextField
-                                variant="outlined"
+                                variant="filled"
                                 margin="normal"
                                 onChange={(e) => this.setState({name: e.target.value})} 
                                 value={this.state.name} 
                                 required
                                 fullWidth
-                                id="nombre"
+                                id="firstName"
                                 label="Nombre"
                                 name="nombre"
                                 autoComplete="nombre"
                                 autoFocus
+                                InputProps={{
+                                    style: {
+                                        backgroundColor: 'white'
+                                    }
+                                }}
                             />
                             <TextField
-                                variant="outlined"
+                                variant="filled"
                                 margin="normal"
                                 onChange={(e) => this.setState({email: e.target.value})} 
                                 value={this.state.email} 
@@ -99,13 +100,18 @@ class Profile extends React.Component {
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
+                                InputProps={{
+                                    style: {
+                                        backgroundColor: 'white'
+                                    }
+                                }}
                             />
                         
                             <Button
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                color="primary"
+                                color="secondary"
                                 className='submit'
                                 disabled={this.state.name === this.props.user.user.name && this.state.email === this.props.user.user.email}
                             >
@@ -115,7 +121,7 @@ class Profile extends React.Component {
                         </form>
                         <form onSubmit={this.changePassword} id="inputForm">
                             <TextField
-                                variant="outlined"
+                                variant="filled"
                                 margin="normal"
                                 onChange={(e) => this.setState({oldPassword: e.target.value, error: ""})}
                                 required
@@ -125,9 +131,14 @@ class Profile extends React.Component {
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
+                                InputProps={{
+                                    style: {
+                                        backgroundColor: 'white'
+                                    }
+                                }}
                             />
                             <TextField
-                                variant="outlined"
+                                variant="filled"
                                 margin="normal"
                                 onChange={(e) => this.setState({newPassword: e.target.value, error: ""})}
                                 required
@@ -137,9 +148,14 @@ class Profile extends React.Component {
                                 type="password"
                                 id="password"
                                 autoComplete="new-password"
+                                InputProps={{
+                                    style: {
+                                        backgroundColor: 'white'
+                                    }
+                                }}
                             />
                             <TextField
-                                variant="outlined"
+                                variant="filled"
                                 margin="normal"
                                 onChange={(e) => this.setState({newPassword2: e.target.value, error: ""})}
                                 required
@@ -149,12 +165,17 @@ class Profile extends React.Component {
                                 type="password"
                                 id="password"
                                 autoComplete="repeat-new-password"
+                                InputProps={{
+                                    style: {
+                                        backgroundColor: 'white'
+                                    }
+                                }}
                             />
                             <Button
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                color="primary"
+                                color="secondary"
                                 className='submit'
                                 disabled={this.state.newPassword === this.state.oldPassword}
                             >

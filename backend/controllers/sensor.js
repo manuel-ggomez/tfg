@@ -91,3 +91,27 @@ exports.openSubsistema = (req, res, next) => {
     }
     openSubsistema(name)
 }
+
+exports.runScript = (req, res, next) => {
+    async function runScript() {
+        const {stdout, stderr} = exec('ssh root@172.17.0.3 "cd ..; python3 running.py"')
+        res.send(true)
+    }
+    runScript()
+}
+
+exports.stopScript = (req, res, next) => {
+    async function stopScript() {
+        const {stdout, stderr} = exec('ssh root@172.17.0.3 pkill -9 -f running.py')
+        res.send(true)
+    }
+    stopScript()
+}
+
+exports.monitorScript = (req, res, next) => {
+    async function monitorScript() {
+        const {stdout, stderr} = exec('ssh root@172.17.0.3 ps aux | grep running.py')
+        res.send(true)
+    }
+    monitorScript()
+}

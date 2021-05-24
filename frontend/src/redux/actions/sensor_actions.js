@@ -81,6 +81,31 @@ export const openSubsistema = (name) => dispatch => {
     })
 }
 
+export const runScript = () => dispatch => {
+    axios.put('/sensor/runScript')
+    .then(res => {
+        console.log(res.data)
+        if (res.data) {
+            dispatch({
+                type: 'SCRIPT_STATE',
+                payload: true
+            })
+        }
+    })
+}
+
+export const stopScript = () => dispatch => {
+    axios.put('/sensor/stopScript')
+    .then(res => {
+        console.log(res.data)
+        if (res.data) {
+            dispatch({
+                type: 'SCRIPT_STATE',
+                payload: false
+            })
+        }
+    })
+}
 
 export const resetSensorError = () => dispatch => {
     dispatch({

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {listUsers, deleteUser, validateUser} from '../../redux/actions/user_actions';
-import Sidebar from '../Sidebar';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import './ListaUsuarios.css'
+import './Home.css';
 
 class ListaUsuarios extends Component {
     constructor(props){
@@ -53,13 +53,11 @@ class ListaUsuarios extends Component {
             );
         } else {
             return(
-                <div>
-                    <Sidebar />
-                    <div style={{backgroundColor: '#203354'}} className='listaUsuarios'>
-                        <h1 style={{color: 'white'}}>Usuarios registrados en el sistema</h1>
-                        {userList}
-                    </div>
+                <div style={{backgroundColor: '#203354'}} className='listaUsuarios'>
+                    <div className='subtituloPagina' style={{marginBottom: '20px'}}>Usuarios registrados en el sistema</div>
+                    {userList}
                 </div>
+
             );
         }
     }

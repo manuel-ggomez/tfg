@@ -2,6 +2,7 @@ const initialState = {
     sensors: [],
     sensorOpened: false,
     sensorStatus: false,
+    scriptState: false,
     error: "",
     success: ""
 }
@@ -28,6 +29,11 @@ export default function(state = initialState, action){
                 ...state,
                 sensorOpened: action.payload,
                 sensorStatus: !state.sensorStatus
+            }
+        case 'SCRIPT_STATE':
+            return {
+                ...state,
+                scriptState: action.payload
             }
         default:
             return state;

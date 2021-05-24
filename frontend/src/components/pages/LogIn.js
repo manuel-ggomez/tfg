@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
 import {loginUser, resetUserError} from '../../redux/actions/user_actions';
 import {connect} from "react-redux";
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import Sidebar from '../Sidebar';
 import './LogIn.css';
+import { Divider } from '@material-ui/core';
 
 class Login extends Component {
     constructor(props){
@@ -49,15 +48,13 @@ class Login extends Component {
                 <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className='paper'>
-                    <Avatar className='avatar'>
-                    <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5" style={{color: 'white'}}>
+
+                    <div style={{color: 'white', fontFamily: 'Header', textAlign: 'center', fontSize: '30px'}}>
                     Iniciar Sesión
-                    </Typography>
+                    </div>
                     <form onSubmit={this.login} className='form' >
                     <TextField
-                        variant="outlined"
+                        variant="filled"
                         margin="normal"
                         onChange={(e) => {this.setState({email: e.target.value})}} 
                         required
@@ -67,9 +64,14 @@ class Login extends Component {
                         name="email"
                         autoComplete="off"
                         autoFocus
+                        InputProps={{
+                            style: {
+                                backgroundColor: 'white'
+                            }
+                        }}
                     />
                     <TextField
-                        variant="outlined"
+                        variant="filled"
                         margin="normal"
                         onChange={(e) => {this.setState({password: e.target.value})}}
                         required
@@ -79,13 +81,19 @@ class Login extends Component {
                         type="password"
                         id="password"
                         autoComplete="off"
+                        InputProps={{
+                            style: {
+                                backgroundColor: 'white'
+                            }
+                        }}
                     />
                     <Button
                         type="submit"
                         fullWidth
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         className='submit'
+                        
                     >
                         Iniciar Sesión
                     </Button>

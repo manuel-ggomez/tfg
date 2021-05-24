@@ -63,13 +63,13 @@ class Topics extends Component {
 
             return(
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                    <h2 style={{color: 'white'}}>Broker KAFKA</h2>
+                    <h2 style={{color: 'white', marginBottom: '20px'}}>Broker KAFKA</h2>
                     {topics.length > 0 ? 
                     <div>{topicList}</div> : <h5 style={{color: 'white'}}>No hay topics</h5>}
                     <div>
                     <form style={{width: "200px"}} onSubmit={this.createTopic} className='form' >
                         <TextField
-                            variant="outlined"
+                            variant="filled"
                             margin="normal"
                             onChange={(e) => {this.setState({name: e.target.value})}} 
                             required
@@ -78,12 +78,17 @@ class Topics extends Component {
                             id="name"
                             label="Nombre del topic"
                             autoFocus
+                            InputProps={{
+                                style: {
+                                    backgroundColor: 'white'
+                                }
+                            }}
                         />
                         <Button
                             type="submit"
                             fullWidth
                             variant="contained"
-                            color="primary"
+                            color="secondary"
                             className='submit'
                         >
                             Crear

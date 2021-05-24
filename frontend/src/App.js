@@ -11,9 +11,16 @@ import GestionUsuarios from './components/pages/GestionUsuarios';
 import Profile from './components/pages/Profile';
 import Register from './components/pages/Register';
 import ListaUsuarios from './components/pages/ListaUsuarios';
+import Usuarios2 from './components/pages/Usuarios2';
+import {stopScript} from './redux/actions/sensor_actions';
 
 
 class App extends React.Component {
+
+  componentDidMount(){
+    this.props.stopScript()
+  }
+
   render(){
     return (
       <Router>
@@ -25,7 +32,7 @@ class App extends React.Component {
           <Route exact path='/gestion/configuracion' render={() => this.props.user.authenticated ? <Configuracion/> : <Redirect to="/" />} />
           <Route exact path='/visualizacion/riesgo-dinamico' render={() => this.props.user.authenticated ? <RiesgoDinamico/> : <Redirect to="/" />} />
           <Route exact path='/visualizacion/consulta-datos' render={() => this.props.user.authenticated ? <ConsultaDatos/> : <Redirect to="/" />} />
-          <Route exact path='/administracion/gestion-usuarios' render={() => this.props.user.authenticated ? <GestionUsuarios/> : <Redirect to="/" />} />
+          <Route exact path='/administracion/gestion-usuarios' render={() => this.props.user.authenticated ? <Usuarios2/> : <Redirect to="/" />} />
           <Route exact path='/administracion/gestion-usuarios/lista-usuarios' render={() => this.props.user.authenticated ? <ListaUsuarios/> : <Redirect to="/" />}/>
           <Route exact path='/administracion/gestion-usuarios/editar-perfil' render={() => this.props.user.authenticated ? <Profile/> : <Redirect to="/" />}/>
           <Route exact path='/administracion/gestion-usuarios/crear-usuario' render={() => this.props.user.authenticated ? <Register admin={true}/> : <Redirect to="/" />}/>
@@ -40,4 +47,4 @@ function mapStateToProps(state) {
   return { ...state };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {stopScript})(App);
