@@ -5,6 +5,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import './ListaUsuarios.css'
 import './Home.css';
+import '../Cards.css';
 
 class ListaUsuarios extends Component {
     constructor(props){

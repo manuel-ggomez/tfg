@@ -65,8 +65,8 @@ class Profile extends React.Component {
                 <Sidebar />
                 <Container component="main" maxWidth="xs">
                 <CssBaseline />
-                <div className='paper'>
-                    <div style={{color: 'white', fontFamily: 'Header', textAlign: 'center', fontSize: '20px'}}>
+                <div className='paper' style={{marginTop: '30px'}}>
+                    <div className='subtituloPagina' style={{fontSize: '50px'}}>
                     Editar perfil
                     </div>
                         <form onSubmit={this.editUser} id="inputForm">

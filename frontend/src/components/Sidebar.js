@@ -110,19 +110,19 @@ class Sidebar extends Component {
             <nav className='navbar'>
               <ul className='nav-menu'>
                 <li className='nav-item'>
-                  <div className='titulo' style={{ color: '#fff', fontFamily: 'Header'}}>
+                  <div className='titulo' style={{ color: '#fff', fontFamily: 'Header', fontSize: '30px', fontWeight: 'bold'}}>
                     Consola de Mando y Control PLICA 
                   </div>
                 </li>
 
                 <li className='nav-item'>
-                  <div id='hora' style={{ color: '#fff', fontFamily: 'Header'}}>
+                  <div id='hora' style={{ color: '#fff', fontFamily: 'Header', fontSize: '30px', fontWeight: 'bold', width: '180px', textAlign: 'left'}}>
                     {this.state.time}
                   </div>
                 </li>
                 
                 <div className="dropdown">
-                  <button className="dropbtn" onMouseEnter={this.drop}><div style={{display: "flex", justifyContent: "center", fontFamily: 'Header', fontWeight: 'normal'}}>{this.props.user.user.name}<ArrowDropDownIcon/></div></button>
+                  <button className="dropbtn" onMouseEnter={this.drop}><div style={{display: "flex", justifyContent: "center", fontFamily: 'Header', fontWeight: 'bold', fontSize: '30px'}}>{this.props.user.user.name}<ArrowDropDownIcon/></div></button>
                   <div className="dropdown-content" id="myDropdown">
                       <div className="navDrop"><button className="navButtonDrop" id="navDrop1" onClick={this.editProfile}><h5 id="navDrop1Text">Editar perfil</h5></button></div>
                       <div className="navDrop"><button className="navButtonDrop" id="navDrop2" onClick={this.logout}><h5 id="navDrop2Text">Cerrar sesión</h5></button></div>

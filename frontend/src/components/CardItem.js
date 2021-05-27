@@ -14,7 +14,7 @@ function CardItem(props) {
             />
           </figure>
           <div className='cards__item__info'>
-            <div className='cards__item__text' style={{fontFamily: 'Header'}}>{props.text}</div>
+            <div className='cards__item__text' style={{fontFamily: 'Header', fontWeight: 'bold', fontSize: '20px'}}>{props.text}</div>
           </div>
         </Link>
       </li>

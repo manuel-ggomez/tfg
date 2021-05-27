@@ -44,8 +44,8 @@ class Home extends Component {
                 <div className="backgroundMain" style={{backgroundColor: '#203354', height: '100vh'}}>
                     <div className="tituloPrincipal">Consola M&C PLICA</div>
                     <div className="mainButtons" style={{fontFamily: 'Header'}}>
-                        <button style={{fontFamily: 'Header'}} onClick={() => this.props.history.push('/login')} className="mainButton1">Iniciar sesión</button>
-                        <button style={{fontFamily: 'Header'}} onClick={() => this.props.history.push('/register')} className="mainButton2">Registrarse</button>
+                        <button style={{fontFamily: 'Header', fontSize: '25px'}} onClick={() => this.props.history.push('/login')} className="mainButton1">Iniciar sesión</button>
+                        <button style={{fontFamily: 'Header', fontSize: '25px'}} onClick={() => this.props.history.push('/register')} className="mainButton2">Registrarse</button>
                     </div>
                 </div>
             );

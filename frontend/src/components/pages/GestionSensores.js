@@ -67,17 +67,17 @@ class GestionSensores extends Component {
             <div className="contenedor" >
                 <div className='huecoIzq' style={{height: '50vh'}}>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
-                            <button className="btnOpcion" style={{color: this.state.type === "wifi" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "wifi", opened: false})}>Sensores WiFi</button>
-                            <button className="btnOpcion" style={{color: this.state.type === "bluetooth" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "bluetooth", opened: false})}>Sensores Bluetooth</button>
-                            <button className="btnOpcion" style={{color: this.state.type === "rf" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "rf", opened: false})}>Sensores Radio Frecuencia</button>
-                            <button className="btnOpcion" style={{color: this.state.type === "rm" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "rm", opened: false})}>Sensores Redes Móviles</button>
-                            <button className="btnOpcion" style={{color: this.state.type === "ciberseguridad" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "ciberseguridad", opened: false})}>Sensores Ciberseguridad</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "wifi" ? 'red' : null, fontFamily: 'Header', fontWeight: 'bold', fontSize: '25px'}} onClick={() => this.setState({type: "wifi", opened: false})}>Sensores WiFi</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "bluetooth" ? 'red' : null, fontFamily: 'Header', fontWeight: 'bold', fontSize: '25px'}} onClick={() => this.setState({type: "bluetooth", opened: false})}>Sensores Bluetooth</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "rf" ? 'red' : null, fontFamily: 'Header', fontWeight: 'bold', fontSize: '25px'}} onClick={() => this.setState({type: "rf", opened: false})}>Sensores Radio Frecuencia</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "rm" ? 'red' : null, fontFamily: 'Header', fontWeight: 'bold', fontSize: '25px'}} onClick={() => this.setState({type: "rm", opened: false})}>Sensores Redes Móviles</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "ciberseguridad" ? 'red' : null, fontFamily: 'Header', fontWeight: 'bold', fontSize: '25px'}} onClick={() => this.setState({type: "ciberseguridad", opened: false})}>Sensores Ciberseguridad</button>
                         </div>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
-                            <button className="btnOpcion" style={{color: this.state.type === "bigData" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "bigData", opened: false})}>Subsistema Big Data</button>
-                            <button className="btnOpcion" style={{color: this.state.type === "subsist1" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "subsist1", opened: false})}>Subsistema Gestión de flujos</button>
-                            <button className="btnOpcion" style={{color: this.state.type === "subsist2" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "subsist2", opened: false})}>Subsistema Procesamiento</button>
-                            <button className="btnOpcion" style={{color: this.state.type === "subsist3" ? 'red' : null, fontFamily: 'Header'}} onClick={() => this.setState({type: "subsist3", opened: false})}>Subsistema Ontologías</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "bigData" ? 'red' : null, fontFamily: 'Header', fontWeight: 'bold', fontSize: '25px'}} onClick={() => this.setState({type: "bigData", opened: false})}>Subsistema Big Data</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "subsist1" ? 'red' : null, fontFamily: 'Header', fontWeight: 'bold', fontSize: '25px'}} onClick={() => this.setState({type: "subsist1", opened: false})}>Subsistema Gestión de flujos</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "subsist2" ? 'red' : null, fontFamily: 'Header', fontWeight: 'bold', fontSize: '25px'}} onClick={() => this.setState({type: "subsist2", opened: false})}>Subsistema Procesamiento</button>
+                            <button className="btnOpcion" style={{color: this.state.type === "subsist3" ? 'red' : null, fontFamily: 'Header', fontWeight: 'bold', fontSize: '25px'}} onClick={() => this.setState({type: "subsist3", opened: false})}>Subsistema Ontologías</button>
                         </div>
                 </div>
                 <div className='huecoDer' style={{margin: '30px', height: '50vh'}}>

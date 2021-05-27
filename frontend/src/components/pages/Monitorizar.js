@@ -15,7 +15,7 @@ class Monitorizar extends Component {
         return(
 
             <div className='estado' style={{boxShadow: this.props.sensor.scriptState ? "0 0 20px 1px green"  : "0 0 20px 1px red" }}>
-                Estado: {this.props.sensor.scriptState ? "Activo"  : "Inactivo" } 
+                <div style={{color: '#203354'}}>Estado: {this.props.sensor.scriptState ? "Activo"  : "Inactivo" }</div>
                 {this.props.sensor.scriptState ?
                 <button className='btnScript' onClick={()=>{this.props.stopScript()}}><StopIcon fontSize='large' style={{color: 'red'}}/></button>
                 :

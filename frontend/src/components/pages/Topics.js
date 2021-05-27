@@ -5,6 +5,9 @@ import TextField from '@material-ui/core/TextField';
 import {createTopic, getTopics, deleteTopic, resetTopicError, resetTopicSuccess} from '../../redux/actions/topic_actions'
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import DeleteIcon from '@material-ui/icons/Delete';
+import '../Cards.css';
+import './ListaUsuarios.css';
 
 
 
@@ -54,18 +57,18 @@ class Topics extends Component {
         if (topics !== null) {
             const topicList = topics.map((topic) => {
                 return(
-                    <div>
+                    <div style={{display: 'flex', color: 'white', fontFamily: 'Header', fontWeight: 'bold', fontSize: '25px'}}>
                         {topic}
-                        <button onClick={this.deleteTopic.bind(this, topic)}>Borrar</button>
+                        <button className="delete2" onClick={this.deleteTopic.bind(this, topic)}><DeleteIcon/></button>
                     </div>
                 )
             })
 
             return(
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                    <h2 style={{color: 'white', marginBottom: '20px'}}>Broker KAFKA</h2>
+                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px'}}>
+                    <div className='subtituloPagina' style={{color: 'white', marginBottom: '20px'}}>Broker KAFKA</div>
                     {topics.length > 0 ? 
-                    <div>{topicList}</div> : <h5 style={{color: 'white'}}>No hay topics</h5>}
+                    <div>{topicList}</div> : <div style={{color: 'white', fontFamily: 'Header', fontWeight: 'bold', fontSize: '25px'}}>No hay topics</div>}
                     <div>
                     <form style={{width: "200px"}} onSubmit={this.createTopic} className='form' >
                         <TextField

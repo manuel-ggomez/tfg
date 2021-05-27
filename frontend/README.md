@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Consola M&C PLICA
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Herramienta creada con Express para el backend y React para el frontend. Esta herramienta busca facilitar el manejo de los recursos de la plataforma de conciencia cibersituacional PLICA mediante la implementación de un sistema de gestión de sensores y subsistemas, un sistema de visualización y un sistema de administración de usuarios.
 
-## Available Scripts
+## Comenzando 🚀
 
-In the project directory, you can run:
+Estas instrucciones te permitirán arrancar una copia del proyecto en tu máquina local para propósitos de desarrollo y pruebas.
 
-### `npm start`
+### Pre-requisitos 📋
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Para el correcto funcionamiento de la aplicación es necesario tener instalados Node.js, Git, Docker, Docker Compose, Apache Kafka, Apache Zookeeper y GoTTY.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Node.js:** https://nodejs.org/es/download/
 
-### `npm test`
+**Git:** https://git-scm.com/downloads
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Docker:** https://docs.docker.com/get-docker/
 
-### `npm run build`
+**Docker Compose:** https://docs.docker.com/compose/install/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Apache Kafka:** https://kafka.apache.org/downloads
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Apache Zookeeper:** https://zookeeper.apache.org/releases.html
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**GoTTY:** https://github.com/yudai/gotty
 
-### `npm run eject`
+### Instalación 🔧
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**En el backend**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Instalamos las dependencias
+```
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Arrancamos e inicializamos la base de datos
+```
+npx sequelize-cli db:migrate
+npx sequelize-cli db:all 
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**En el frontend**
 
-## Learn More
+Instalamos las dependencias
+```
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Despliegue 📦
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Para desplegar el proyecto basta con arrancar el frontend y el backend.
+Para ello, en ambos sitios hacemos:
+```
+npm start
+```
 
-### Code Splitting
+## Construido con 🛠️
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* [React](https://es.reactjs.org/) - La biblioteca JavaScript utilizada en el frontend
+* [Redux](https://es.redux.js.org/) - Complemento de React para la gestión del estado de la aplicación
+* [Express](https://expressjs.com/es/) - Infraestructura utilizada para los servicios REST
+* [SQLite](https://www.sqlite.org/index.html) - Base de datos utilizada
 
-### Analyzing the Bundle Size
+## Autor ✒
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Manuel E. García Gómez**

@@ -49,7 +49,7 @@ class Login extends Component {
                 <CssBaseline />
                 <div className='paper'>
 
-                    <div style={{color: 'white', fontFamily: 'Header', textAlign: 'center', fontSize: '30px'}}>
+                    <div style={{color: 'white', fontFamily: 'Header', textAlign: 'center', fontSize: '50px'}}>
                     Iniciar Sesión
                     </div>
                     <form onSubmit={this.login} className='form' >

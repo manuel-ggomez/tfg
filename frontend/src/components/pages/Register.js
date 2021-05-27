@@ -65,8 +65,8 @@ class Register extends Component {
                 <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className='paper'>
-                    <div style={{color: 'white', fontFamily: 'Header', textAlign: 'center', fontSize: '30px'}}>
-                    Crear usuario
+                    <div style={{color: 'white', fontFamily: 'Header', textAlign: 'center', fontSize: '50px'}}>
+                    Registrarse
                     </div>
                     <form onSubmit={this.register} className='form' noValidate>
                     <Grid container spacing={2}>
@@ -154,7 +154,7 @@ class Register extends Component {
                         className='submit'
                         style={{marginTop: '10px'}}
                     >
-                        Crear
+                        Registrarse
                     </Button>
                     </form>
                 </div>
