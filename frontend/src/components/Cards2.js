@@ -8,7 +8,7 @@ function Cards2() {
       <div className='cards__wrapper'>
         <ul className='cards__items'>
           <CardItem
-            src='images/pandora_logo.jpg'
+            src='images/img-8.jpg'
             text='Gestión de Sensores y Subsistemas'
             label='Gestión'
             path='/gestion/sensores'
